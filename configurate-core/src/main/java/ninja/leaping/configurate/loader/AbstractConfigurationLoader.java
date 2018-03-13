@@ -18,9 +18,6 @@ package ninja.leaping.configurate.loader;
 
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
-import ninja.leaping.configurate.ConfigurationNode;
-import ninja.leaping.configurate.ConfigurationOptions;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -34,6 +31,8 @@ import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.util.Objects;
 import java.util.concurrent.Callable;
+import ninja.leaping.configurate.ConfigurationNode;
+import ninja.leaping.configurate.ConfigurationOptions;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
@@ -164,11 +163,11 @@ public abstract class AbstractConfigurationLoader<NodeType extends Configuration
             return node;
         } catch (FileNotFoundException | NoSuchFileException e) {
             // Squash -- there's nothing to read
-        } catch (Exception e) {
-            if (e instanceof IOException) {
-                throw (IOException) e;
+        } catch (Throwable t) {
+            if (t instanceof IOException) {
+                throw (IOException) t;
             } else {
-                throw new IOException(e);
+                throw new IOException(t);
             }
         }
         return createEmptyNode(options);
@@ -193,11 +192,11 @@ public abstract class AbstractConfigurationLoader<NodeType extends Configuration
                 }
             }
             saveInternal(node, writer);
-        } catch (Exception e) {
-            if (e instanceof IOException) {
-                throw (IOException) e;
+        } catch (Throwable t) {
+            if (t instanceof IOException) {
+                throw (IOException) t;
             } else {
-                throw new IOException(e);
+                throw new IOException(t);
             }
         }
     }
