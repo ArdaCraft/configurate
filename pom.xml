@@ -21,7 +21,7 @@
 
     <groupId>ninja.leaping.configurate</groupId>
     <artifactId>configurate-parent</artifactId>
-    <version>3.4.1</version>
+    <version>3.4.2</version>
     <packaging>pom</packaging>
     <name>Configurate Parent</name>
     <description>A simple configuration library for Java applications that can handle a variety of formats and
@@ -178,26 +178,6 @@
                     <goals>install deploy site-deploy</goals>
                     <releaseProfiles>release</releaseProfiles>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.0.0-M1</version>
-                <executions>
-                    <execution>
-                        <id>enforce-maven</id>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                        <configuration>
-                            <rules>
-                                <requireMavenVersion>
-                                    <version>2.0</version>
-                                </requireMavenVersion>
-                            </rules>    
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>io.github.zlika</groupId>
